@@ -33,6 +33,7 @@
             this.txtFactorial = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblEvenOddResult = new System.Windows.Forms.Label();
             this.btnEvenOdd = new System.Windows.Forms.Button();
             this.txtInputNum = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,7 +51,8 @@
             this.rbChar = new System.Windows.Forms.RadioButton();
             this.rbDoubles = new System.Windows.Forms.RadioButton();
             this.rbInteger = new System.Windows.Forms.RadioButton();
-            this.lblEvenOddResult = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnDisplay = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -110,6 +112,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "(2) Check for Even/Odd";
             // 
+            // lblEvenOddResult
+            // 
+            this.lblEvenOddResult.AutoSize = true;
+            this.lblEvenOddResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEvenOddResult.Location = new System.Drawing.Point(23, 122);
+            this.lblEvenOddResult.Name = "lblEvenOddResult";
+            this.lblEvenOddResult.Size = new System.Drawing.Size(0, 15);
+            this.lblEvenOddResult.TabIndex = 3;
+            // 
             // btnEvenOdd
             // 
             this.btnEvenOdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -127,6 +138,7 @@
             this.txtInputNum.Name = "txtInputNum";
             this.txtInputNum.Size = new System.Drawing.Size(100, 23);
             this.txtInputNum.TabIndex = 1;
+            this.txtInputNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputNum_KeyPress);
             // 
             // label2
             // 
@@ -140,6 +152,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnDisplay);
+            this.groupBox3.Controls.Add(this.btnSearch);
             this.groupBox3.Controls.Add(this.listBox1);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.txtHeighIndex);
@@ -154,9 +168,9 @@
             this.groupBox3.Controls.Add(this.rbDoubles);
             this.groupBox3.Controls.Add(this.rbInteger);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(300, 12);
+            this.groupBox3.Location = new System.Drawing.Point(288, 13);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(372, 306);
+            this.groupBox3.Size = new System.Drawing.Size(420, 306);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "(3) Display List of Values and Search";
@@ -184,21 +198,21 @@
             // 
             this.txtHeighIndex.Location = new System.Drawing.Point(226, 142);
             this.txtHeighIndex.Name = "txtHeighIndex";
-            this.txtHeighIndex.Size = new System.Drawing.Size(100, 23);
+            this.txtHeighIndex.Size = new System.Drawing.Size(89, 23);
             this.txtHeighIndex.TabIndex = 10;
             // 
             // txtLowIndex
             // 
             this.txtLowIndex.Location = new System.Drawing.Point(226, 112);
             this.txtLowIndex.Name = "txtLowIndex";
-            this.txtLowIndex.Size = new System.Drawing.Size(100, 23);
+            this.txtLowIndex.Size = new System.Drawing.Size(89, 23);
             this.txtLowIndex.TabIndex = 9;
             // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(226, 82);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(100, 23);
+            this.txtSearch.Size = new System.Drawing.Size(89, 23);
             this.txtSearch.TabIndex = 8;
             // 
             // label5
@@ -249,6 +263,7 @@
             this.btnGenerateValues.TabIndex = 3;
             this.btnGenerateValues.Text = "Generate Values";
             this.btnGenerateValues.UseVisualStyleBackColor = true;
+            this.btnGenerateValues.Click += new System.EventHandler(this.btnGenerateValues_Click);
             // 
             // rbChar
             // 
@@ -286,20 +301,33 @@
             this.rbInteger.Text = "Integer";
             this.rbInteger.UseVisualStyleBackColor = true;
             // 
-            // lblEvenOddResult
+            // btnSearch
             // 
-            this.lblEvenOddResult.AutoSize = true;
-            this.lblEvenOddResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEvenOddResult.Location = new System.Drawing.Point(23, 122);
-            this.lblEvenOddResult.Name = "lblEvenOddResult";
-            this.lblEvenOddResult.Size = new System.Drawing.Size(0, 15);
-            this.lblEvenOddResult.TabIndex = 3;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(321, 94);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 13;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnDisplay
+            // 
+            this.btnDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDisplay.Location = new System.Drawing.Point(321, 134);
+            this.btnDisplay.Name = "btnDisplay";
+            this.btnDisplay.Size = new System.Drawing.Size(75, 23);
+            this.btnDisplay.TabIndex = 14;
+            this.btnDisplay.Text = "Display";
+            this.btnDisplay.UseVisualStyleBackColor = true;
+            this.btnDisplay.Click += new System.EventHandler(this.btnDisplay_Click);
             // 
             // UserInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 331);
+            this.ClientSize = new System.Drawing.Size(714, 331);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -340,6 +368,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblEvenOddResult;
+        private System.Windows.Forms.Button btnDisplay;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
 
