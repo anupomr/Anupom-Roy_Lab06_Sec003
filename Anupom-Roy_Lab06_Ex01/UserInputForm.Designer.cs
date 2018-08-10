@@ -38,7 +38,7 @@
             this.txtInputNum = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxLowToHeighValue = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtHeighIndex = new System.Windows.Forms.TextBox();
             this.txtLowIndex = new System.Windows.Forms.TextBox();
@@ -53,6 +53,7 @@
             this.rbInteger = new System.Windows.Forms.RadioButton();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDisplay = new System.Windows.Forms.Button();
+            this.lblFactorialResult = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -60,13 +61,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblFactorialResult);
             this.groupBox1.Controls.Add(this.btnCalculate);
             this.groupBox1.Controls.Add(this.txtFactorial);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(270, 136);
+            this.groupBox1.Size = new System.Drawing.Size(270, 149);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "(1) Calculate Asynchronously";
@@ -80,6 +82,7 @@
             this.btnCalculate.TabIndex = 2;
             this.btnCalculate.Text = "Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // txtFactorial
             // 
@@ -87,6 +90,7 @@
             this.txtFactorial.Name = "txtFactorial";
             this.txtFactorial.Size = new System.Drawing.Size(100, 23);
             this.txtFactorial.TabIndex = 1;
+            this.txtFactorial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputNum_KeyPress);
             // 
             // label1
             // 
@@ -105,9 +109,9 @@
             this.groupBox2.Controls.Add(this.txtInputNum);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 154);
+            this.groupBox2.Location = new System.Drawing.Point(12, 166);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(270, 164);
+            this.groupBox2.Size = new System.Drawing.Size(270, 148);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "(2) Check for Even/Odd";
@@ -116,7 +120,7 @@
             // 
             this.lblEvenOddResult.AutoSize = true;
             this.lblEvenOddResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEvenOddResult.Location = new System.Drawing.Point(23, 122);
+            this.lblEvenOddResult.Location = new System.Drawing.Point(23, 113);
             this.lblEvenOddResult.Name = "lblEvenOddResult";
             this.lblEvenOddResult.Size = new System.Drawing.Size(0, 15);
             this.lblEvenOddResult.TabIndex = 3;
@@ -154,7 +158,7 @@
             // 
             this.groupBox3.Controls.Add(this.btnDisplay);
             this.groupBox3.Controls.Add(this.btnSearch);
-            this.groupBox3.Controls.Add(this.listBox1);
+            this.groupBox3.Controls.Add(this.listBoxLowToHeighValue);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.txtHeighIndex);
             this.groupBox3.Controls.Add(this.txtLowIndex);
@@ -175,14 +179,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "(3) Display List of Values and Search";
             // 
-            // listBox1
+            // listBoxLowToHeighValue
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(95, 213);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(268, 68);
-            this.listBox1.TabIndex = 12;
+            this.listBoxLowToHeighValue.FormattingEnabled = true;
+            this.listBoxLowToHeighValue.ItemHeight = 16;
+            this.listBoxLowToHeighValue.Location = new System.Drawing.Point(95, 213);
+            this.listBoxLowToHeighValue.MultiColumn = true;
+            this.listBoxLowToHeighValue.Name = "listBoxLowToHeighValue";
+            this.listBoxLowToHeighValue.Size = new System.Drawing.Size(268, 68);
+            this.listBoxLowToHeighValue.TabIndex = 12;
             // 
             // label6
             // 
@@ -200,6 +205,7 @@
             this.txtHeighIndex.Name = "txtHeighIndex";
             this.txtHeighIndex.Size = new System.Drawing.Size(89, 23);
             this.txtHeighIndex.TabIndex = 10;
+            this.txtHeighIndex.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputNum_KeyPress);
             // 
             // txtLowIndex
             // 
@@ -207,6 +213,7 @@
             this.txtLowIndex.Name = "txtLowIndex";
             this.txtLowIndex.Size = new System.Drawing.Size(89, 23);
             this.txtLowIndex.TabIndex = 9;
+            this.txtLowIndex.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputNum_KeyPress);
             // 
             // txtSearch
             // 
@@ -214,6 +221,8 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(89, 23);
             this.txtSearch.TabIndex = 8;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputNum_KeyPress);
             // 
             // label5
             // 
@@ -273,7 +282,6 @@
             this.rbChar.Name = "rbChar";
             this.rbChar.Size = new System.Drawing.Size(51, 19);
             this.rbChar.TabIndex = 2;
-            this.rbChar.TabStop = true;
             this.rbChar.Text = "Char";
             this.rbChar.UseVisualStyleBackColor = true;
             // 
@@ -285,13 +293,13 @@
             this.rbDoubles.Name = "rbDoubles";
             this.rbDoubles.Size = new System.Drawing.Size(71, 19);
             this.rbDoubles.TabIndex = 1;
-            this.rbDoubles.TabStop = true;
             this.rbDoubles.Text = "Doubles";
             this.rbDoubles.UseVisualStyleBackColor = true;
             // 
             // rbInteger
             // 
             this.rbInteger.AutoSize = true;
+            this.rbInteger.Checked = true;
             this.rbInteger.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbInteger.Location = new System.Drawing.Point(17, 32);
             this.rbInteger.Name = "rbInteger";
@@ -323,6 +331,15 @@
             this.btnDisplay.UseVisualStyleBackColor = true;
             this.btnDisplay.Click += new System.EventHandler(this.btnDisplay_Click);
             // 
+            // lblFactorialResult
+            // 
+            this.lblFactorialResult.AutoSize = true;
+            this.lblFactorialResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFactorialResult.Location = new System.Drawing.Point(23, 120);
+            this.lblFactorialResult.Name = "lblFactorialResult";
+            this.lblFactorialResult.Size = new System.Drawing.Size(0, 15);
+            this.lblFactorialResult.TabIndex = 3;
+            // 
             // UserInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,6 +350,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "UserInputForm";
             this.Text = "Asynchronus Programming";
+            this.Load += new System.EventHandler(this.btnGenerateValues_Click);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -359,7 +377,7 @@
         private System.Windows.Forms.RadioButton rbChar;
         private System.Windows.Forms.RadioButton rbDoubles;
         private System.Windows.Forms.RadioButton rbInteger;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxLowToHeighValue;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtHeighIndex;
         private System.Windows.Forms.TextBox txtLowIndex;
@@ -370,6 +388,7 @@
         private System.Windows.Forms.Label lblEvenOddResult;
         private System.Windows.Forms.Button btnDisplay;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label lblFactorialResult;
     }
 }
 
