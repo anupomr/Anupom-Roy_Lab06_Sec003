@@ -12,7 +12,7 @@ using System.Numerics;
 /*
  * Student Name: Anupom Roy
  * Student id  : 300853516
- * Assinment No 6
+ * Assinment   : # 6 Using Asynchronous Programming and Lambdas
  * 
  */
 namespace Anupom_Roy_Lab06_Ex01
@@ -49,6 +49,7 @@ namespace Anupom_Roy_Lab06_Ex01
             }
            
         } 
+        //Finding Even Number 
         private bool IsEven(int num) => num % 2 == 0;
         //Checking Key press && restrict invalid key
         private void txtInputNum_KeyPress(object sender, KeyPressEventArgs e)
@@ -109,7 +110,8 @@ namespace Anupom_Roy_Lab06_Ex01
                     listBoxDisplay.Items.Add(charArray[i]);
                 }
             }
-        }           
+        }    
+        //Searching number from selected array
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
@@ -214,15 +216,19 @@ namespace Anupom_Roy_Lab06_Ex01
                 return;
             }
             lblFactorialResult.Text = "Please wait ....";
-            Task<long> factorialTask = Task.Run(()=>factorialResult(num));          
-            await factorialTask;            
+            Task<long> factorialTask = Task.Run(()=>factorialResult(num));           
+            await factorialTask;
+           
             lblFactorialResult.Text = BigInteger.Parse(factorialTask.Result.ToString()).ToString();
         }
+        //Find Factorial Number 
         //public  long factorialResult(long num)=> (num <= 1)?1: num * factorialResult(num - 1);
-        public long factorialResult(long num) {
+        public long factorialResult(long num)
+        {
             Thread.Sleep(5000);
             if (num <= 1) return 1;
-            else return num * factorialResult(num - 1); }
+            else return num * factorialResult(num - 1);
+        }
 
     }
 }
